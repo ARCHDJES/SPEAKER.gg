@@ -1,0 +1,10 @@
+{
+  "name": "speaker",
+  "version": "1.0.0",
+  "description": "Text in. Voice out.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}

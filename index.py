@@ -5,8 +5,25 @@ import os
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
 
-client = discord.Client(intents=discord.Intents.default())
+intents = discord.Intents.default()
+intents.message_content = True
 
+client = discord.Client(intents=intents)
+
+tts_ativo = True
+texto = ""
+
+@client.event
+async def on_message(message):
+  if message.author == client.user:
+    return
+
+  global texto
+  texto = message.content
+  
+  if tts_ativo:
+    await message.channel.send(texto)
+  
 @client.event
 async def on_ready():
   print("Speaker está pronto para falar")

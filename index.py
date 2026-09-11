@@ -37,6 +37,7 @@ async def on_message(message):
   
 @client.event
 async def on_ready():
-  print("Speaker está pronto para falar")
+    await tree.sync()
+    print("Speaker está pronto para falar")
   
 client.run(token)

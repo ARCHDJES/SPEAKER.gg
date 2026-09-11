@@ -1,6 +1,7 @@
 import discord
 from dotenv import load_dotenv
 import os
+from gtts import gTTS
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
@@ -22,6 +23,7 @@ async def on_message(message):
   texto = message.content
   
   if tts_ativo:
+    gTTS(texto, lang='pt').save('teste.mp3')
     await message.channel.send(texto)
   
 @client.event

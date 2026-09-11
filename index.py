@@ -22,6 +22,10 @@ async def on_message(message):
   global texto
   texto = message.content
   
+  if message.author.voice:
+    canal = message.author.voice.channel
+    await canal.connect()
+  
   if tts_ativo:
     gTTS(texto, lang='pt').save('audio.mp3')
     await message.channel.send(file=discord.File('audio.mp3'))

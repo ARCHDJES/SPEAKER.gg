@@ -10,6 +10,11 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
+tree = discord.app_commands.CommandTree(client)
+
+@tree.command(name="tts", description="Ativa ou desativa o TTS")
+async def tts(interaction):
+  await interaction.response.send_message("comando enviado")
 
 tts_ativo = True
 texto = ""
